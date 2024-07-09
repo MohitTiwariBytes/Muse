@@ -107,7 +107,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   justify-content: center;
   flex-direction: row-reverse;
   gap: 27px;
-  margin-left: 200px;
+  margin-left: 150px;
 }
 
 .volume input {

@@ -3,6 +3,7 @@ import "./Home.css";
 import Sidebar from "../Components/SideBar";
 import TopBar from "../Components/TopBar.jsx";
 import BottomBar from "../Components/BottomBar.jsx";
+import Card from "../Components/Card.jsx";
 
 const Home = () => {
   return (
@@ -16,6 +17,9 @@ const Home = () => {
         </div>
         <div className="bottomBar">
           <BottomBar></BottomBar>
+        </div>
+        <div className="songs">
+          <Card></Card>
         </div>
       </div>
     </div>
