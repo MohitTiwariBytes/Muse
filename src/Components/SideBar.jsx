@@ -12,7 +12,7 @@ const Sidebar = () => {
     <div className="main-sidebar">
       <div className="sidebar">
         <div className="header">
-          <h1>Muse</h1>
+          <h1>संगीत सरोवर</h1>
         </div>
         <div className="top">
           <div className="items">

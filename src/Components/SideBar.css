@@ -1,7 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Yatra+One&display=swap");
+
 .main-sidebar {
   height: 100%;
   width: 100%;
   background: rgb(19, 19, 19);
+}
+
+* {
+  font-family: "Poppins", sans-serif;
 }
 
 .sideBar {
@@ -19,10 +25,16 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: white;
+  color: rgb(111, 142, 245);
   gap: 25px;
   margin: 40px;
   font-size: 25px;
+}
+
+.header h1 {
+  font-family: "Yatra One", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .main-homepage {
