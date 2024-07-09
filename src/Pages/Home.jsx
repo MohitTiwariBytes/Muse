@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import Sidebar from "../Components/SideBar";
 import TopBar from "../Components/TopBar.jsx";
+import BottomBar from "../Components/BottomBar.jsx";
 
 const Home = () => {
   return (
@@ -9,8 +10,13 @@ const Home = () => {
       <div className="sideBar">
         <Sidebar></Sidebar>
       </div>
-      <div className="topBar">
-        <TopBar></TopBar>
+      <div className="main-content">
+        <div className="topBar">
+          <TopBar></TopBar>
+        </div>
+        <div className="bottomBar">
+          <BottomBar></BottomBar>
+        </div>
       </div>
     </div>
   );

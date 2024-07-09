@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TopBar.css";
 
 const TopBar = () => {
+  const [activeGenre, setActiveGenre] = useState("All");
+
+  const handleGenreClick = (genre) => {
+    setActiveGenre(genre);
+  };
+
   return (
     <div className="main-topbar">
       <div className="topbar">
         <div className="genre">
-          <span className="active">All</span>
-          <span>Pop</span>
-          <span>Rock</span>
-          <span>Jazz</span>
-          <span>Country</span>
+          {["All", "Pop", "Rock", "Jazz", "Country"].map((genre) => (
+            <span
+              key={genre}
+              className={activeGenre === genre ? "active" : ""}
+              onClick={() => handleGenreClick(genre)}
+            >
+              {genre}
+            </span>
+          ))}
         </div>
-        <div className="userProfile">
-          <i className="fa-solid fa-user fa-2x"></i>
-        </div>
+      </div>
+
+      <div className="userProfile">
+        <i className="fa-solid fa-user fa-2x"></i>
       </div>
     </div>
   );

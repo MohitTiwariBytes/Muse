@@ -11,6 +11,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  position: fixed;
 }
 
 .header {
@@ -48,7 +49,6 @@
 
 .items h1:hover {
   cursor: pointer;
-  color: white;
 }
 
 .top {
@@ -78,4 +78,8 @@
 
 .bottom h1 {
   font-size: 20px;
+}
+
+h1.activeText {
+  color: white;
 }
