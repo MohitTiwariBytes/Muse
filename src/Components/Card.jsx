@@ -1,8 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./Card.css";
 
-const Card = () => {
+const Card = ({ setDataToSend }) => {
   const [data, setData] = useState(null);
+  const [playingSong, setPlayingSong] = useState(null);
+
+  const handlePlay = (song) => {
+    setPlayingSong(song.audio);
+
+    setDataToSend({
+      name: song.name,
+      artist: song.artist_name,
+      album: song.album_image,
+    });
+
+    if (song.audio) {
+      const audio = new Audio(song.audio);
+      audio.play();
+    }
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -32,6 +48,9 @@ const Card = () => {
             <h1>{song.name}</h1>
             <h2>{song.artist_name}</h2>
             <img src={song.album_image} alt={song.name} />
+          </div>
+          <div className="button">
+            <button onClick={() => handlePlay(song)}>Play</button>
           </div>
         </div>
       ))}

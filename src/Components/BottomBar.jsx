@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./BottomBar.css";
 
-const BottomBar = () => {
+const BottomBar = ({ dataToSend }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [value, setValue] = useState(0);
 
@@ -49,14 +49,17 @@ const BottomBar = () => {
           <div className="songCoverSmall">
             <img
               height="80px"
-              src="https://m.media-amazon.com/images/I/51bwO06TspL._UF1000,1000_QL80_.jpg"
-              alt=""
+              src={
+                dataToSend.album ||
+                "https://m.media-amazon.com/images/I/51bwO06TspL._UF1000,1000_QL80_.jpg"
+              }
+              alt={dataToSend.name || "Song Cover"}
             />
           </div>
 
           <div className="songInfo">
-            <h1>Happy Nation</h1>
-            <span>By Ace of Base</span>
+            <h1>{dataToSend.name || "Song Name"}</h1>
+            <span>By {dataToSend.artist || "Artist Name"}</span>
           </div>
 
           <div className="controls">
