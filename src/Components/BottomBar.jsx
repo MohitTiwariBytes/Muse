@@ -1,23 +1,51 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./BottomBar.css";
 
 const BottomBar = ({ dataToSend }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [value, setValue] = useState(0);
+  const audioRef = useRef(null);
+  const durationRef = useRef(0);
+
+  useEffect(() => {
+    if (dataToSend.url) {
+      const audio = new Audio(dataToSend.url);
+      audioRef.current = audio;
+
+      audio.addEventListener("loadedmetadata", () => {
+        durationRef.current = audio.duration;
+      });
+
+      audio.addEventListener("timeupdate", () => {
+        setValue(audio.currentTime);
+      });
+
+      return () => {
+        audio.removeEventListener("loadedmetadata", () => {});
+        audio.removeEventListener("timeupdate", () => {});
+      };
+    }
+  }, [dataToSend.url]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
 
   const handleClick = () => {
-    setIsPlaying((prevIsPlaying) => !prevIsPlaying);
+    setIsPlaying(!isPlaying);
   };
 
   useEffect(() => {
     let timer;
     if (isPlaying) {
       timer = setInterval(() => {
-        setValue((prevValue) => {
-          const newValue = prevValue + 1;
-          handleChange(newValue);
-          return newValue;
-        });
+        setValue(audioRef.current.currentTime);
       }, 1000);
     }
     return () => clearInterval(timer);
@@ -40,6 +68,9 @@ const BottomBar = ({ dataToSend }) => {
     const input = parseInt(e.target.value, 10);
     setValue(input);
     handleChange(input);
+    if (audioRef.current) {
+      audioRef.current.currentTime = input;
+    }
   };
 
   return (
@@ -78,7 +109,7 @@ const BottomBar = ({ dataToSend }) => {
               <input
                 onChange={handleSliderChange}
                 type="range"
-                max="215"
+                max={durationRef.current}
                 min="0"
                 id="slider"
                 value={value}

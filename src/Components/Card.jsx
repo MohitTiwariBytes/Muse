@@ -6,18 +6,12 @@ const Card = ({ setDataToSend }) => {
   const [playingSong, setPlayingSong] = useState(null);
 
   const handlePlay = (song) => {
-    setPlayingSong(song.audio);
-
     setDataToSend({
       name: song.name,
       artist: song.artist_name,
       album: song.album_image,
+      url: song.audio,
     });
-
-    if (song.audio) {
-      const audio = new Audio(song.audio);
-      audio.play();
-    }
   };
 
   useEffect(() => {
