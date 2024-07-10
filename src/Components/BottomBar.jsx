@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./BottomBar.css";
 
+let currentAudio = null;
+
 const BottomBar = ({ dataToSend }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [value, setValue] = useState(0);
   const audioRef = useRef(null);
   const durationRef = useRef(0);
+  const currentDataToSend = useRef(dataToSend);
 
   useEffect(() => {
     if (dataToSend.url) {
@@ -14,10 +17,6 @@ const BottomBar = ({ dataToSend }) => {
 
       audio.addEventListener("loadedmetadata", () => {
         durationRef.current = audio.duration;
-      });
-
-      audio.addEventListener("timeupdate", () => {
-        setValue(audio.currentTime);
       });
 
       return () => {
@@ -30,12 +29,27 @@ const BottomBar = ({ dataToSend }) => {
   useEffect(() => {
     if (audioRef.current) {
       if (isPlaying) {
+        if (currentAudio && currentAudio !== audioRef.current) {
+          currentAudio.pause();
+        }
+        currentAudio = audioRef.current;
         audioRef.current.play();
       } else {
         audioRef.current.pause();
+        if (currentAudio === audioRef.current) {
+          currentAudio = null;
+        }
       }
     }
   }, [isPlaying]);
+
+  useEffect(() => {
+    if (currentDataToSend.current.url !== dataToSend.url && currentAudio) {
+      currentAudio.pause();
+      setIsPlaying(false);
+      currentDataToSend.current = dataToSend;
+    }
+  }, [dataToSend]);
 
   const handleClick = () => {
     setIsPlaying(!isPlaying);

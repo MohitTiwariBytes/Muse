@@ -49,3 +49,25 @@
   text-align: center;
   color: #ccc;
 }
+
+.card button {
+  padding: 18px;
+  border: 1px solid var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100px;
+  border-radius: 16px;
+  background: var(--blue);
+  color: black;
+  transition: all 0.1s ease;
+}
+
+.card button:hover {
+  scale: 1.1;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
