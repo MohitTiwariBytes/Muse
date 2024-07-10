@@ -6,6 +6,11 @@ const Sidebar = () => {
 
   const handleTextClick = (text) => {
     setActiveText(text);
+    if (text.toLowerCase() === "home") {
+      window.location.href = "/";
+    } else {
+      window.location.replace(`/${text.toLowerCase()}`);
+    }
   };
 
   return (
