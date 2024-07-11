@@ -20,7 +20,7 @@ const Search = () => {
 
   return (
     <div className="main-search-page">
-      <div className="sideBar">
+      <div style={{ marginTop: "-150px" }} className="sideBar">
         <Sidebar />
       </div>
       <div className="main-content">
