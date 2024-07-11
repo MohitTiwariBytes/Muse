@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Card.css";
 
-const Card = ({ setDataToSend }) => {
+const Card = ({ setDataToSend, URL }) => {
   const [data, setData] = useState(null);
   const [playingSong, setPlayingSong] = useState(null);
 
@@ -17,9 +17,10 @@ const Card = ({ setDataToSend }) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          "https://api.jamendo.com/v3.0/tracks?client_id=8428cdd9&format=json"
-        );
+        const response = await fetch(URL);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -27,8 +28,10 @@ const Card = ({ setDataToSend }) => {
       }
     };
 
-    getData();
-  }, []);
+    if (URL) {
+      getData();
+    }
+  }, [URL]); // Re-run the effect when URL changes
 
   if (!data) {
     return <div>Loading...</div>;

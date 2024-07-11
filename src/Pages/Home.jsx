@@ -10,6 +10,7 @@ const Home = () => {
     name: "",
     artist: "",
     album: "",
+    url: "",
   });
 
   return (
@@ -24,7 +25,12 @@ const Home = () => {
       </div>
 
       <div className="songs">
-        <Card setDataToSend={setDataToSend} />
+        <Card
+          setDataToSend={setDataToSend}
+          URL={
+            "https://api.jamendo.com/v3.0/tracks?client_id=8428cdd9&format=json"
+          }
+        />
       </div>
       <div className="bottomBar">
         <BottomBar dataToSend={dataToSend} />

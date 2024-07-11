@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../Components/SideBar";
 import TopBar from "../Components/TopBar.jsx";
 import BottomBar from "../Components/BottomBar.jsx";
@@ -6,6 +6,18 @@ import Card from "../Components/Card.jsx";
 import "./Search.css";
 
 const Search = () => {
+  const [dataToSend, setDataToSend] = useState({
+    name: "",
+    artist: "",
+    album: "",
+    url: "",
+  });
+  const [search, setSearch] = useState("");
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <div className="main-search-page">
       <div className="sideBar">
@@ -33,12 +45,13 @@ const Search = () => {
         >
           <div className="inputMain">
             <input
+              onChange={handleChange}
               type="text"
               placeholder="Search for songs, artists, or albums"
             />
             <i
               style={{
-                color: "black",
+                color: "white",
                 position: "absolute",
                 top: "25px",
                 left: "100%",
@@ -47,6 +60,15 @@ const Search = () => {
               className="fa-solid fa-magnifying-glass fa-2x"
             ></i>
           </div>
+        </div>
+        <div className="songs">
+          <Card
+            setDataToSend={setDataToSend}
+            URL={`https://api.jamendo.com/v3.0/tracks?client_id=8428cdd9&format=json&search=${search}`}
+          />
+        </div>
+        <div className="bottomBar">
+          <BottomBar dataToSend={dataToSend} />
         </div>
       </div>
     </div>
