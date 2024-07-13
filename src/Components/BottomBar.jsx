@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./BottomBar.css";
+import questionMarkImg from "../assets/questionMark.png";
 
 let currentAudio = null;
 
@@ -94,10 +95,8 @@ const BottomBar = ({ dataToSend }) => {
           <div className="songCoverSmall">
             <img
               height="80px"
-              src={
-                dataToSend.album ||
-                "https://m.media-amazon.com/images/I/51bwO06TspL._UF1000,1000_QL80_.jpg"
-              }
+              style={{ borderRadius: "20px" }}
+              src={dataToSend.album || questionMarkImg}
               alt={dataToSend.name || "Song Cover"}
             />
           </div>

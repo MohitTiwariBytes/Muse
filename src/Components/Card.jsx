@@ -34,7 +34,20 @@ const Card = ({ setDataToSend, URL }) => {
   }, [URL]); // Re-run the effect when URL changes
 
   if (!data) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        style={{
+          width: "73%",
+          height: "100%",
+          marginTop: "100px",
+          display: "flex",
+          justifyContent: "center",
+          color: "white",
+        }}
+      >
+        <span class="loader"></span>
+      </div>
+    );
   }
 
   return (

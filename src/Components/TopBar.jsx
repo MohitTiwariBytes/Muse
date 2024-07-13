@@ -25,7 +25,12 @@ const TopBar = () => {
       </div>
 
       <div className="userProfile">
-        <i className="fa-solid fa-user fa-2x"></i>
+        <i
+          onClick={() => {
+            window.location.replace("login");
+          }}
+          className="fa-solid fa-user fa-2x"
+        ></i>
       </div>
     </div>
   );
