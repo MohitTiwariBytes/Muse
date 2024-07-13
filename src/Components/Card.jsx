@@ -41,11 +41,15 @@ const Card = ({ setDataToSend, URL }) => {
           height: "100%",
           marginTop: "100px",
           display: "flex",
-          justifyContent: "center",
+          alignItems: "center",
+          gap: "20px",
           color: "white",
+          flexDirection: "column",
+          marginLeft: "27%",
         }}
       >
         <span class="loader"></span>
+        <span>Loading may take some time, Please be patient!</span>
       </div>
     );
   }

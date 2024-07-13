@@ -69,14 +69,8 @@ const BottomBar = ({ dataToSend }) => {
   const handleChange = (input) => {
     const minutes = Math.floor(input / 60);
     const seconds = input % 60;
-    document.getElementById("minutes").textContent = String(minutes).padStart(
-      2,
-      "0"
-    );
-    document.getElementById("seconds").textContent = String(seconds).padStart(
-      2,
-      "0"
-    );
+    document.getElementById("minutes").innerText = String(minutes);
+    document.getElementById("seconds").innerText = String(seconds);
   };
 
   const handleSliderChange = (e) => {
