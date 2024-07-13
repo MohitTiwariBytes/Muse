@@ -45,7 +45,6 @@ const Card = ({ setDataToSend, URL }) => {
           gap: "20px",
           color: "white",
           flexDirection: "column",
-          marginLeft: "27%",
         }}
       >
         <span class="loader"></span>

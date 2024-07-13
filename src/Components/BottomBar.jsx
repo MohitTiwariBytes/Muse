@@ -104,6 +104,7 @@ const BottomBar = ({ dataToSend }) => {
             <div className="playButton">
               <button onClick={handleClick}>
                 <i
+                  style={{ color: "black" }}
                   className={
                     isPlaying
                       ? "fa-solid fa-pause fa-2x"
