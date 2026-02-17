@@ -4,24 +4,23 @@ import "./TopBar.css";
 const TopBar = () => {
   const [activeGenre, setActiveGenre] = useState("All");
 
-  const handleGenreClick = (genre) => {
-    setActiveGenre(genre);
-  };
-
   return (
     <div className="main-topbar">
-      <div className="topbar">
-        <div className="genre">
-          {["All", "Pop", "Rock", "Jazz", "Country"].map((genre) => (
-            <span
-              key={genre}
-              className={activeGenre === genre ? "active" : ""}
-              onClick={() => handleGenreClick(genre)}
-            >
-              {genre}
-            </span>
-          ))}
-        </div>
+      <div className="topbar-heading">
+        <h2>Discover your next favorite track</h2>
+        <p>Fresh royalty-free picks from Jamendo</p>
+      </div>
+
+      <div className="genre">
+        {["All", "Pop", "Rock", "Jazz", "Country"].map((genre) => (
+          <span
+            key={genre}
+            className={activeGenre === genre ? "active" : ""}
+            onClick={() => setActiveGenre(genre)}
+          >
+            {genre}
+          </span>
+        ))}
       </div>
 
       <div className="userProfile">
@@ -29,7 +28,7 @@ const TopBar = () => {
           onClick={() => {
             window.location.replace("login");
           }}
-          className="fa-solid fa-user fa-2x"
+          className="fa-solid fa-user"
         ></i>
       </div>
     </div>

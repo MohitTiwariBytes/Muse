@@ -1,22 +1,72 @@
-.inputMain input {
-  padding: 30px;
-  width: 100%;
-  border-radius: 24px;
-  border: 2px solid var(--blue);
-  color: white;
-  background: rgb(37, 37, 37);
+.main-search-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 18px;
+  padding: 18px;
 }
 
-body {
-  overflow-x: hidden;
+.search-main-content {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 16px;
+}
+
+.search-header {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-header h1 {
+  font-size: 1.35rem;
+}
+
+.search-header p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 5px;
 }
 
 .inputMain {
-  width: 60vw;
+  position: relative;
 }
 
-.songs {
-  position: absolute;
-  top: 10%;
+.inputMain input {
+  padding: 16px 46px 16px 16px;
   width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  color: white;
+  background: #121b34;
+  font-size: 0.95rem;
+}
+
+.inputMain i {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b7c3e8;
+}
+
+.searchbox .userProfile i,
+.search-header .userProfile i {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #27335a;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .main-search-page {
+    grid-template-columns: 1fr;
+  }
 }

@@ -3,7 +3,6 @@ import "./Card.css";
 
 const Card = ({ setDataToSend, URL }) => {
   const [data, setData] = useState(null);
-  const [playingSong, setPlayingSong] = useState(null);
 
   const handlePlay = (song) => {
     setDataToSend({
@@ -31,24 +30,13 @@ const Card = ({ setDataToSend, URL }) => {
     if (URL) {
       getData();
     }
-  }, [URL]); // Re-run the effect when URL changes
+  }, [URL]);
 
   if (!data) {
     return (
-      <div
-        style={{
-          width: "73%",
-          height: "100%",
-          marginTop: "100px",
-          display: "flex",
-          alignItems: "center",
-          gap: "20px",
-          color: "white",
-          flexDirection: "column",
-        }}
-      >
-        <span class="loader"></span>
-        <span>Loading may take some time, Please be patient!</span>
+      <div className="card-loader-wrap">
+        <span className="loader"></span>
+        <span>Loading tracks, this can take a moment.</span>
       </div>
     );
   }
@@ -57,13 +45,15 @@ const Card = ({ setDataToSend, URL }) => {
     <div className="main-card">
       {data.results.map((song) => (
         <div key={song.id} className="card">
+          <img src={song.album_image} alt={song.name} />
           <div className="name">
             <h1>{song.name}</h1>
             <h2>{song.artist_name}</h2>
-            <img src={song.album_image} alt={song.name} />
           </div>
           <div className="button">
-            <button onClick={() => handlePlay(song)}>Play</button>
+            <button onClick={() => handlePlay(song)}>
+              <i className="fa-solid fa-play"></i> Play Preview
+            </button>
           </div>
         </div>
       ))}

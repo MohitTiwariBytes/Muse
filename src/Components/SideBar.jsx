@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SideBar.css";
 
 const Sidebar = () => {
   const [activeText, setActiveText] = useState("Home");
-  const text = localStorage.getItem("activeText");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("activeText");
+    if (saved) {
+      setActiveText(saved);
+    }
+  }, []);
 
   const handleTextClick = (text) => {
     setActiveText(text);
@@ -18,53 +24,59 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="main-sidebar">
+    <aside className="main-sidebar">
       <div className="sidebar">
         <div className="header">
           <h1>संगीत सरोवर</h1>
+          <p>Your ambient music space</p>
         </div>
-        <div className="top">
+
+        <div className="menu-group">
+          <h2>Browse</h2>
           <div className="items">
             <h1
-              className={text === "Home" ? "activeText" : ""}
+              className={activeText === "Home" ? "activeText" : ""}
               onClick={() => handleTextClick("Home")}
             >
               <i className="fa-solid fa-house"></i> Home
             </h1>
             <h1
-              className={text === "Search" ? "activeText" : ""}
+              className={activeText === "Search" ? "activeText" : ""}
               onClick={() => handleTextClick("Search")}
             >
               <i className="fa-solid fa-magnifying-glass"></i> Search
             </h1>
           </div>
         </div>
-        <div className="medium">
+
+        <div className="menu-group">
+          <h2>Library</h2>
           <div className="items">
             <h1
-              className={text === "Your Library" ? "activeText" : ""}
+              className={activeText === "Your Library" ? "activeText" : ""}
               onClick={() => handleTextClick("Your Library")}
             >
               <i className="fa-solid fa-heart"></i> Your Library
             </h1>
             <h1
-              className={text === "Downloads" ? "activeText" : ""}
+              className={activeText === "Downloads" ? "activeText" : ""}
               onClick={() => handleTextClick("Downloads")}
             >
               <i className="fa-solid fa-download"></i> Downloads
             </h1>
           </div>
         </div>
-        <div className="bottom">
+
+        <div className="menu-group secondary">
           <div className="items">
             <h1
-              className={text === "Help" ? "activeText" : ""}
+              className={activeText === "Help" ? "activeText" : ""}
               onClick={() => handleTextClick("Help")}
             >
               <i className="fa-solid fa-circle-info"></i> Help
             </h1>
             <h1
-              className={text === "Settings" ? "activeText" : ""}
+              className={activeText === "Settings" ? "activeText" : ""}
               onClick={() => handleTextClick("Settings")}
             >
               <i className="fa-solid fa-gear"></i> Settings
@@ -72,7 +84,7 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </aside>
   );
 };
 
