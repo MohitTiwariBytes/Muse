@@ -1,18 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Yatra+One&display=swap");
 
-html,
-body,
-#root {
-  height: 300vh;
-  width: 100%;
-  background: black;
+:root {
+  --bg: #090b15;
+  --panel: rgba(17, 23, 40, 0.78);
+  --panel-strong: #111727;
+  --muted: #93a0c0;
+  --text: #ecf2ff;
+  --accent: #7f8cff;
+  --accent-2: #4fd1c5;
+  --border: rgba(143, 162, 255, 0.22);
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-:root {
-  --blue: rgb(111, 142, 245);
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  color: var(--text);
+  background: radial-gradient(circle at 15% 15%, #1b2652 0%, transparent 35%),
+    radial-gradient(circle at 85% 0%, #2b174f 0%, transparent 38%),
+    var(--bg);
+}
+
+a {
+  color: inherit;
 }

@@ -1,3 +1,43 @@
 .main-homepage {
-  margin-top: -153px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 18px;
+  padding: 18px;
+}
+
+.sideBar {
+  grid-row: 1 / 4;
+}
+
+.main-content {
+  grid-column: 2;
+}
+
+.songs {
+  grid-column: 2;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.bottomBar {
+  grid-column: 2;
+}
+
+@media (max-width: 900px) {
+  .main-homepage {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  .sideBar {
+    grid-row: auto;
+  }
+
+  .main-content,
+  .songs,
+  .bottomBar {
+    grid-column: 1;
+  }
 }
